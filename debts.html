@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deudas - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Gestión de Deudas</h1>
+
+         <div class="layout-columns"> <!-- Dos columnas: Formulario y Lista -->
+
+            <!-- Columna Formulario (Añadir/Editar) -->
+            <div class="section form-section">
+                 <h3 id="debt-form-title">Añadir Nueva Deuda</h3>
+                <form id="debt-form">
+                    <input type="hidden" id="edit-debt-id"> <!-- Para saber si editamos -->
+                     <div class="form-row">
+                        <label for="debt-name">Nombre:</label>
+                        <input type="text" id="debt-name" placeholder="Ej: Préstamo Coche, Tarjeta XYZ" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="debt-amount">Monto Inicial:</label>
+                        <input type="number" id="debt-amount" placeholder="1000.00" step="0.01" min="0.01" required>
+                    </div>
+                     <div class="form-row">
+                        <label for="debt-due-date">Fecha Vencimiento (Opc):</label>
+                        <input type="date" id="debt-due-date">
+                    </div>
+                    <!-- Podríamos añadir Tasa de Interés (opcional) -->
+                    <!-- <div class="form-row">
+                        <label for="debt-interest-rate">Tasa Interés (% Anual, Opc):</label>
+                        <input type="number" id="debt-interest-rate" placeholder="5.0" step="0.01" min="0">
+                    </div> -->
+                     <button type="submit" class="action-btn" id="debt-submit-btn">Añadir Deuda</button>
+                     <button type="button" id="cancel-edit-debt-btn" class="hidden">Cancelar Edición</button>
+                </form>
+            </div>
+
+            <!-- Columna Lista de Deudas -->
+            <div class="section">
+                 <h3>Mis Deudas</h3>
+                 <ul id="debt-list" class="item-list">
+                    <!-- Las deudas se cargarán aquí con JavaScript -->
+                    <li>Cargando deudas...</li>
+                 </ul>
+             </div>
+         </div>
+    </div>
+
+    <script src="common.js" defer></script>
+    <script src="debts.js" defer></script> <!-- JS para deudas -->
+</body>
+</html>

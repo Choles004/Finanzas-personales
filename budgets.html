@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuestos - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para barras de progreso */
+        .progress-bar-container {
+            width: 100%; background-color: var(--primary-color);
+            border-radius: 4px; overflow: hidden; margin-top: 5px; height: 20px;
+        }
+        .progress-bar {
+            height: 100%; background-color: var(--budget-color); /* Azul */
+            color: var(--bg-color); text-align: center; line-height: 20px;
+            font-size: 0.8em; white-space: nowrap;
+            transition: width 0.5s ease-in-out;
+        }
+        .progress-bar.over-budget { background-color: var(--expense-color); } /* Rojo si se pasa */
+        .budget-item { border-left-color: var(--budget-color); }
+    </style>
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Gestión de Presupuestos</h1>
+
+        <div class="layout-columns">
+
+            <!-- Formulario para Añadir/Editar Presupuesto -->
+            <div class="section form-section">
+                <h3 id="budget-form-title">Añadir Presupuesto Mensual</h3>
+                <form id="budget-form">
+                    <input type="hidden" id="edit-budget-id">
+                    <div>
+                        <label for="budget-category">Categoría:</label>
+                        <!-- Usar datalist para sugerir categorías existentes de gastos -->
+                        <input type="text" id="budget-category" list="category-suggestions-budget" required>
+                        <datalist id="category-suggestions-budget">
+                            <!-- Sugerencias de categorías de gastos con JS -->
+                        </datalist>
+                    </div>
+                    <div>
+                        <label for="budget-amount">Monto Mensual:</label>
+                        <input type="number" id="budget-amount" step="0.01" min="0.01" required>
+                    </div>
+                    <button type="submit" class="action-btn" id="budget-submit-btn">Guardar Presupuesto</button>
+                     <button type="button" id="cancel-edit-budget-btn" class="hidden">Cancelar Edición</button>
+                </form>
+            </div>
+
+            <!-- Lista de Presupuestos y Progreso -->
+            <div class="section">
+                <h3>Presupuestos Actuales (Mes Corriente)</h3>
+                <ul id="budget-list" class="item-list">
+                    <!-- Los presupuestos se cargarán aquí con JavaScript -->
+                    <li>Cargando presupuestos...</li>
+                    <!-- Ejemplo de cómo se vería un item (generado por JS):
+                    <li class="budget-item">
+                        <div class="item-info">
+                            <strong>Comida</strong><br>
+                            <small>Presupuesto: 500.00 € / Gastado: 250.00 €</small>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 50%;">50%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="edit-btn" data-id="...">Editar</button>
+                            <button class="delete-btn" data-id="...">X</button>
+                        </div>
+                    </li>
+                     -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js" defer></script>
+    <script src="budgets.js" defer></script> <!-- JS para presupuestos -->
+</body>
+</html>

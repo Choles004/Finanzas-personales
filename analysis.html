@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js necesario aquí -->
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Análisis Financiero</h1>
+
+        <!-- Gráfico de Gastos por Categoría -->
+        <section class="chart-section">
+             <h2>Gastos por Categoría</h2>
+             <div class="chart-controls">
+                 <span>Filtrar:</span>
+                 <button data-chart="expense" data-filter="all" class="active">Todo</button>
+                 <button data-chart="expense" data-filter="month">Mes Actual</button>
+                 <button data-chart="expense" data-filter="year">Año Actual</button>
+                 <button data-chart="expense" data-filter="last_month">Mes Pasado</button>
+                 <!-- Podríamos añadir selector de mes/año específico -->
+             </div>
+             <div class="chart-container">
+                <canvas id="expense-chart"></canvas>
+             </div>
+        </section>
+
+        <hr>
+
+        <!-- Nuevo: Gráfico Ingresos vs Gastos -->
+        <section class="chart-section">
+             <h2>Ingresos vs. Gastos Mensuales</h2>
+             <div class="chart-controls">
+                  <span>Periodo:</span>
+                  <select id="income-expense-period">
+                      <option value="last_6_months">Últimos 6 Meses</option>
+                      <option value="last_12_months">Últimos 12 Meses</option>
+                      <option value="current_year">Año Actual</option>
+                      <option value="previous_year">Año Anterior</option>
+                  </select>
+                  <button id="update-income-expense-chart">Actualizar</button>
+             </div>
+              <div class="chart-container">
+                <canvas id="income-expense-chart"></canvas>
+              </div>
+        </section>
+
+        <!-- Opcional: Otros análisis (ej: Evolución Patrimonio Neto) -->
+
+    </div>
+
+    <script src="common.js" defer></script>
+    <script src="analysis.js" defer></script> <!-- JS para análisis y gráficos -->
+</body>
+</html>

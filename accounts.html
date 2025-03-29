@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentas - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Gestión de Cuentas</h1>
+
+        <div class="layout-columns"> <!-- Dos columnas: Formulario y Lista -->
+
+            <!-- Columna Formulario (Añadir/Editar) -->
+            <div class="section form-section">
+                <h3 id="account-form-title">Añadir Nueva Cuenta</h3>
+                <form id="account-form">
+                    <input type="hidden" id="edit-account-id"> <!-- Para saber si editamos -->
+                    <div class="form-row">
+                        <label for="account-name">Nombre:</label>
+                        <input type="text" id="account-name" placeholder="Ej: Banco Principal, Efectivo" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="account-type">Tipo:</label>
+                        <select id="account-type" required>
+                            <option value="checking">Cuenta Corriente/Ahorros</option>
+                            <option value="cash">Efectivo</option>
+                            <option value="credit_card">Tarjeta de Crédito</option>
+                            <option value="digital_wallet">Billetera Digital</option>
+                            <option value="investment">Inversión</option> <!-- Nuevo tipo -->
+                            <option value="other_asset">Otro Activo</option>
+                        </select>
+                    </div>
+                     <div class="form-row">
+                        <label for="account-balance">Saldo Inicial:</label>
+                        <input type="number" id="account-balance" placeholder="0.00" step="0.01" required>
+                    </div>
+                    <button type="submit" class="action-btn" id="account-submit-btn">Añadir Cuenta</button>
+                    <button type="button" id="cancel-edit-account-btn" class="hidden">Cancelar Edición</button>
+                </form>
+            </div>
+
+            <!-- Columna Lista de Cuentas -->
+            <div class="section">
+                <h3>Mis Cuentas</h3>
+                <ul id="account-list" class="item-list">
+                    <!-- Las cuentas se cargarán aquí con JavaScript -->
+                    <li>Cargando cuentas...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js" defer></script>
+    <script src="accounts.js" defer></script> <!-- JS para cuentas -->
+</body>
+</html>

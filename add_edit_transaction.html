@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir/Editar Transacción - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- El título cambiará si estamos editando -->
+        <h1 id="form-title">Añadir Nueva Transacción</h1>
+
+        <div class="section form-section" style="max-width: 600px; margin: auto;"> <!-- Centrar el formulario -->
+             <form id="transaction-form">
+                <input type="hidden" id="edit-id"> <!-- ID de la transacción a editar -->
+
+                <div>
+                    <label for="transaction-type">Tipo:</label>
+                    <select id="transaction-type" required>
+                        <option value="expense">Gasto</option>
+                        <option value="income">Ingreso</option>
+                        <option value="transfer">Transferencia</option>
+                        <option value="debt_payment">Pago de Deuda</option>
+                    </select>
+                </div>
+
+                <!-- Campos comunes -->
+                 <div><label for="transaction-description">Descripción:</label><input type="text" id="transaction-description" required></div>
+                 <div><label for="transaction-amount">Monto:</label><input type="number" id="transaction-amount" step="0.01" min="0.01" required></div>
+                 <div><label for="transaction-date">Fecha:</label><input type="date" id="transaction-date" required></div>
+
+                <!-- Campos específicos por tipo (controlados por JS) -->
+                 <div id="category-field"><label for="transaction-category">Categoría:</label><input type="text" id="transaction-category" list="category-suggestions"><datalist id="category-suggestions"></datalist></div>
+                 <div id="account-field"><label for="transaction-account">Cuenta:</label><select id="transaction-account"> <!-- Opciones con JS --></select></div>
+                 <div id="account-from-field" class="hidden"><label for="transaction-account-from">Desde Cuenta:</label><select id="transaction-account-from"> <!-- Opciones con JS --></select></div>
+                 <div id="account-to-field" class="hidden"><label for="transaction-account-to">Hasta Cuenta:</label><select id="transaction-account-to"> <!-- Opciones con JS --></select></div>
+                 <div id="debt-field" class="hidden"><label for="transaction-debt">Pagar Deuda:</label><select id="transaction-debt"> <!-- Opciones con JS --></select></div>
+
+                <!-- El texto del botón cambiará si estamos editando -->
+                <button type="submit" class="action-btn full-width" id="submit-btn">Añadir Transacción</button>
+                <button type="button" onclick="window.location.href='transactions.html'" style="background-color: var(--primary-color);">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="common.js" defer></script>
+    <script src="transaction_form.js" defer></script> <!-- JS para este formulario -->
+</body>
+</html>

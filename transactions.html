@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transacciones - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Historial de Transacciones</h1>
+
+        <div class="table-controls form-row"> <!-- Controles encima de la tabla -->
+            <input type="search" id="search-input" placeholder="Buscar transacciones..." style="flex-grow: 3;">
+            <select id="filter-type">
+                <option value="">Todos los tipos</option>
+                <option value="income">Ingresos</option>
+                <option value="expense">Gastos</option>
+                <option value="transfer">Transferencias</option>
+                <option value="debt_payment">Pagos Deuda</option>
+            </select>
+            <input type="month" id="filter-month"> <!-- Filtrar por mes -->
+            <button id="clear-filters-btn">Limpiar Filtros</button>
+        </div>
+
+        <div style="overflow-x: auto;"> <!-- Para scroll horizontal -->
+            <table id="transaction-table">
+                <thead>
+                    <tr>
+                        <th data-sort="type">Tipo <span class="sort-icon"></span></th>
+                        <th data-sort="description">Descripción/Detalles <span class="sort-icon"></span></th>
+                        <th data-sort="amount">Monto <span class="sort-icon"></span></th>
+                        <th data-sort="category">Categoría <span class="sort-icon"></span></th>
+                        <th data-sort="date">Fecha <span class="sort-icon"></span></th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list">
+                    <!-- Las transacciones se cargarán aquí con JavaScript -->
+                    <tr><td colspan="6">Cargando transacciones...</td></tr>
+                </tbody>
+            </table>
+        </div>
+         <div id="pagination-controls" class="pagination">
+             <!-- Controles de paginación (si son muchos datos) se añadirán con JS -->
+         </div>
+    </div>
+
+    <script src="common.js" defer></script>
+    <script src="transactions.js" defer></script> <!-- JS para transacciones -->
+</body>
+</html>

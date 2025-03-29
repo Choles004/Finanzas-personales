@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Gestor Financiero</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al CSS común -->
+</head>
+<body>
+
+        <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Finanzas</a> <!-- Nombre/Logo simple -->
+
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="hamburger-icon"></span> <!-- Icono se crea con CSS -->
+            </button>
+
+            <div id="nav-menu" class="nav-menu"> <!-- Contenedor del menú colapsable -->
+                <ul>
+                    <!-- Los mismos li que tenías antes -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accounts.html">Cuentas</a></li>
+                    <li><a href="debts.html">Deudas</a></li>
+                    <li><a href="transactions.html">Transacciones</a></li>
+                    <li><a href="add_edit_transaction.html">Añadir Transacción</a></li>
+                    <li><a href="analysis.html">Análisis</a></li>
+                    <li><a href="budgets.html">Presupuestos</a></li>
+                    <li><a href="settings.html">Configuración</a></li>
+                </ul>
+                <div class="nav-controls"> <!-- Controles van DENTRO del menú en móvil -->
+                    <label for="currency-select-nav">Moneda:</label>
+                    <select id="currency-select-nav">
+                        <!-- Opciones se cargarán con JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Resumen Financiero General</h1>
+
+        <div id="summary-full">
+             <div id="total-assets">Activos Totales<span id="assets-total">Calculando...</span></div>
+             <div id="total-liabilities">Pasivos Totales<span id="liabilities-total">Calculando...</span></div>
+             <div id="net-worth">Patrimonio Neto<span id="worth-total">Calculando...</span></div>
+             <!-- Podríamos añadir otros resúmenes rápidos aquí (ej: Ingresos/Gastos Mes) -->
+             <div id="monthly-income">Ingresos del Mes<span id="income-month">Calculando...</span></div>
+             <div id="monthly-expense">Gastos del Mes<span id="expense-month">Calculando...</span></div>
+             <div id="monthly-balance">Balance del Mes<span id="balance-month">Calculando...</span></div>
+        </div>
+
+        <hr>
+
+        <section>
+            <h2>Accesos Rápidos</h2>
+            <div class="quick-actions"> <!-- Estilo simple para botones -->
+                <button onclick="window.location.href='add_edit_transaction.html?type=expense'">Añadir Gasto</button>
+                <button onclick="window.location.href='add_edit_transaction.html?type=income'">Añadir Ingreso</button>
+                <button onclick="window.location.href='accounts.html'">Ver Cuentas</button>
+                <button onclick="window.location.href='budgets.html'">Ver Presupuestos</button>
+            </div>
+        </section>
+
+        <!-- Opcional: Podríamos mostrar un pequeño gráfico resumen aquí -->
+
+    </div>
+
+    <script src="common.js" defer></script> <!-- Lógica común -->
+    <script src="dashboard.js" defer></script> <!-- JS específico para esta página -->
+</body>
+</html>
